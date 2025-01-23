@@ -14,7 +14,7 @@ async function bootstrap() {
       appContainer.get<IFetchDataNativeController>(
         FETCH_DATA_NATIVE_MODULE.FETCH_DATA_NATIVE_CONTROLLER
       );
-    fetchDatâNtiveController.fetchDataDapp();
+    fetchDatâNtiveController.fetchAll();
     const storage = appContainer.get<StoragePort>(
       INFRASTRUCTURE_MODULE.IN_MEMORY_STORAGE
     );
