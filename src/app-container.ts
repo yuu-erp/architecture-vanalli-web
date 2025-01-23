@@ -1,6 +1,7 @@
 import { BaseContainer } from "./core/container";
 import { InfrastructureDependencyModule } from "./core/infrastructure/infrastructure.dependency";
 import { FetchDataNativeModule } from "./modules/fetch-data-native/application/fetch-data-native.module";
+import { ViewDependencyModule } from "./view/view.dependency";
 
 export class AppContainer extends BaseContainer {
   constructor() {
@@ -9,10 +10,13 @@ export class AppContainer extends BaseContainer {
       skipBaseClassChecks: true,
     });
   }
+
   public init(): void {
     this.initializeCoreNamespace();
 
     this.initializeModulesNamespace();
+
+    this.initializeViewNamespace();
   }
 
   private initializeCoreNamespace(): void {
@@ -21,6 +25,10 @@ export class AppContainer extends BaseContainer {
 
   private initializeModulesNamespace(): void {
     this.provideFetchDataNativeModule();
+  }
+
+  private initializeViewNamespace(): void {
+    this.load(new ViewDependencyModule());
   }
 
   private provideInfrastructure(): void {

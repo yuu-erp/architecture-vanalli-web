@@ -12,3 +12,4 @@ export interface CreateDappProps {
   type: DappType;
   url: string;
 }
+export interface IDappCreatedDE extends Omit<CreateDappProps, "id"> {}
