@@ -7,6 +7,8 @@ import { CalculateLayoutInteractor } from "../domain/use-case/interactors/calcul
 import { CalculateLayoutInPort } from "../domain/use-case/port/calculate-layout.in-port";
 import { CalculateLayoutRepository } from "../infrastructure";
 import { ICalculateLayoutRepository } from "../domain";
+import { GetCalculateLayoutInteractor } from "../domain/use-case/interactors/get-calculate-layout.interactor";
+import { GetCalculateLayoutInPort } from "../domain/use-case/port/get-calculate-layout.in-port";
 
 export class CalculateLayoutModule extends BaseModule {
   constructor() {
@@ -18,6 +20,7 @@ export class CalculateLayoutModule extends BaseModule {
   public init(bind: interfaces.Bind): void {
     this.provideCalculateLayoutController(bind);
     this.provideCalculateLayoutInteractor(bind);
+    this.provideGetCalculateLayoutInteractor(bind);
     this.provideCalculateLayoutRepository(bind);
   }
 
@@ -31,7 +34,11 @@ export class CalculateLayoutModule extends BaseModule {
       CALCULATE_LAYOUT_MODULE.CALCULATE_LAYOUT_INTERACTOR
     ).to(CalculateLayoutInteractor);
   }
-
+  private provideGetCalculateLayoutInteractor(bind: interfaces.Bind): void {
+    bind<GetCalculateLayoutInPort>(
+      CALCULATE_LAYOUT_MODULE.GET_CALCULATE_LAYOUT_INTERACTOR
+    ).to(GetCalculateLayoutInteractor);
+  }
   private provideCalculateLayoutRepository(bind: interfaces.Bind): void {
     bind<ICalculateLayoutRepository>(
       CALCULATE_LAYOUT_MODULE.CALCULATE_LAYOUT_REPOSITORY
