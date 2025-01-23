@@ -15,10 +15,10 @@ async function bootstrap() {
         FETCH_DATA_NATIVE_MODULE.FETCH_DATA_NATIVE_CONTROLLER
       );
     fetchDatâNtiveController.fetchAll();
-    const storage = appContainer.get<StoragePort>(
+    const storageService = appContainer.get<StoragePort>(
       INFRASTRUCTURE_MODULE.IN_MEMORY_STORAGE
     );
-    console.log("storage", storage.getAll());
+    console.log("storage", storageService.getAll());
   } catch (error) {
     console.log("Application initialized fail.", error);
   }
