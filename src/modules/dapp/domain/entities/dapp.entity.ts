@@ -33,7 +33,6 @@ export class DappEntity extends AggregateRoot<CreateDappProps> {
 
     // Phát hành sự kiện
     dapp.publishEvents(logger, emitter);
-    console.log(dapp);
     return dapp;
   }
   validate(): void {}

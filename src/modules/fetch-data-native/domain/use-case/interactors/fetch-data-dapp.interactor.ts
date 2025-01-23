@@ -17,13 +17,11 @@ export class FetchDataDappInteractor implements FetchDataDappInPort {
     private readonly fetchDataDappOutPort: FetchDataDappOutPort,
     @inject(INFRASTRUCTURE_MODULE.SYSTEM_CORE)
     private readonly systemCore: SystemCorePort
-  ) {
-    console.log("systemCore: ", this.systemCore);
-  }
+  ) {}
 
   async execute(): Promise<DappEntity[][]> {
     try {
-      // return this.fetchDataDappOutPort.insert([[], [], []]);
+      return this.fetchDataDappOutPort.insert([[], [], []]);
       const data = await this.systemCore.send<DappEntity[][]>({
         command: "command",
       });

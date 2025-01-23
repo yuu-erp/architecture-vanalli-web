@@ -4,6 +4,8 @@ import {
   INFRASTRUCTURE_MODULE,
   StoragePort,
 } from "./core/infrastructure";
+import { CALCULATE_LAYOUT_MODULE } from "./modules/calculate-layout/calculate-layouad.symbols";
+import { ICalculateLayoutController } from "./modules/calculate-layout/interfaces/calculate-layout.interface";
 import {
   FETCH_DATA_NATIVE_MODULE,
   IFetchDataNativeController,
@@ -24,8 +26,12 @@ async function bootstrap() {
     const storageService = appContainer.get<StoragePort>(
       INFRASTRUCTURE_MODULE.IN_MEMORY_STORAGE
     );
-    console.log("storage", storageService.getAll());
 
+    const calculateLayoutController =
+      appContainer.get<ICalculateLayoutController>(
+        CALCULATE_LAYOUT_MODULE.CALCULATE_LAYOUT_CONTROLLER
+      );
+    calculateLayoutController.init();
     const rootElement = document.getElementById("app");
     const statusBarController = appContainer.get<StatusBarController>(
       VIEW_LAYER.STATUS_BAR_CONTROLLER
@@ -38,6 +44,7 @@ async function bootstrap() {
     });
 
     rootElement?.appendChild(statusBarController.render());
+    console.log("storage", storageService.getAll());
   } catch (error) {
     console.log("Application initialized fail.", error);
   }

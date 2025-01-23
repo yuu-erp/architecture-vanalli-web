@@ -33,7 +33,6 @@ export abstract class DomainEvent {
   readonly _metadata: DomainEventMetadata;
 
   constructor(domainEvent: IDomainEvent<unknown>) {
-    console.log("domainEvent:", domainEvent);
     invariant(
       !isEmpty(domainEvent._metadata),
       new ArgumentNotProvidedException("Domain event props should not be empty")

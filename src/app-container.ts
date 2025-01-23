@@ -1,5 +1,6 @@
 import { BaseContainer } from "./core/container";
 import { InfrastructureDependencyModule } from "./core/infrastructure/infrastructure.dependency";
+import { CalculateLayoutModule } from "./modules/calculate-layout/application/calculate-layout.module";
 import { FetchDataNativeModule } from "./modules/fetch-data-native/application/fetch-data-native.module";
 import { ViewDependencyModule } from "./view/view.dependency";
 
@@ -25,6 +26,7 @@ export class AppContainer extends BaseContainer {
 
   private initializeModulesNamespace(): void {
     this.provideFetchDataNativeModule();
+    this.provideCalculateLayoutModule();
   }
 
   private initializeViewNamespace(): void {
@@ -37,5 +39,9 @@ export class AppContainer extends BaseContainer {
 
   private provideFetchDataNativeModule(): void {
     this.load(new FetchDataNativeModule());
+  }
+
+  private provideCalculateLayoutModule(): void {
+    this.load(new CalculateLayoutModule());
   }
 }
