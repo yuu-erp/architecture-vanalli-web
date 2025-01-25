@@ -1,7 +1,7 @@
 import { BaseContainer } from "./core/container";
 import { InfrastructureDependencyModule } from "./core/infrastructure/infrastructure.dependency";
-import { CalculateLayoutModule } from "./modules/calculate-layout/application/calculate-layout.module";
 import { FetchDataNativeModule } from "./modules/fetch-data-native/application/fetch-data-native.module";
+import { LayoutCalculatorModule } from "./modules/layout-calculator";
 import { ViewDependencyModule } from "./view/view.dependency";
 
 export class AppContainer extends BaseContainer {
@@ -42,6 +42,6 @@ export class AppContainer extends BaseContainer {
   }
 
   private provideCalculateLayoutModule(): void {
-    this.load(new CalculateLayoutModule());
+    this.load(new LayoutCalculatorModule());
   }
 }
